@@ -14,5 +14,9 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  background: url(../images/background.jpg) 0 0;
+}
+
+.pb-3 {
+    background-color: #ffffff;
 }
