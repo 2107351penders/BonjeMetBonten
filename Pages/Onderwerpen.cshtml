@@ -1,0 +1,19 @@
+﻿@page
+@model BonjeMetBonten.Pages.OnderwerpenModel
+@{
+    ViewData["Title"] = "Onderwerpen";
+}
+
+<table>
+    @foreach (var Onderwerp in Model.Onderwerpen) {
+        <tr>
+            <td>@Onderwerp.Omschrijving</td>
+            <td>
+                <input type="button" value="Toon" />
+            </td>
+            <td>
+                <input type="button" value="Verwijder" />
+            </td>
+        </tr>
+    }
+</table>
