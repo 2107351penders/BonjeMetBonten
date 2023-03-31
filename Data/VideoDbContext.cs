@@ -12,7 +12,9 @@ namespace BonjeMetBonten.Data
         public DbSet<Video> Videos { get; set; } = default!;
         public DbSet<Onderwerp> Onderwerpen { get; set; } = default!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+		public DbSet<Koppel> Koppels { get; set; } = default!;
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Seed database met standaard data gedefinieerd in SeedVideos() en SeedOnderwerpen()
             modelBuilder.Entity<Video>().HasData(SeedVideos());

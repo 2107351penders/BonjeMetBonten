@@ -34,7 +34,7 @@ namespace BonjeMetBonten.Migrations
 
                     b.HasIndex("VideoId");
 
-                    b.ToTable("Koppel");
+                    b.ToTable("Koppels");
 
                     b.HasData(
                         new

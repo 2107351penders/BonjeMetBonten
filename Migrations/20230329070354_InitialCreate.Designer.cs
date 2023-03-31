@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BonjeMetBonten.Migrations
 {
     [DbContext(typeof(VideoDbContext))]
-    [Migration("20230316111324_Initial")]
-    partial class Initial
+    [Migration("20230329070354_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace BonjeMetBonten.Migrations
 
                     b.HasIndex("VideoId");
 
-                    b.ToTable("Koppel");
+                    b.ToTable("Koppels");
 
                     b.HasData(
                         new

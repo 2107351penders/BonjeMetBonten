@@ -1,18 +1,27 @@
-﻿@page
+﻿@page "{handler?}"
 @model BonjeMetBonten.Pages.OnderwerpenModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Onderwerpen";
 }
 
-<table>
+<h1>Onderwerpen</h1>
+
+<form method="post">
+    <input type="text" asp-for="nieuwOnderwerp">
+    <input type="submit" value="Voeg onderwerp toe">
+    <span asp-validation-for="nieuwOnderwerp" style="color:red"></span>
+</form>
+
+<table class="table">
     @foreach (var Onderwerp in Model.Onderwerpen) {
         <tr>
             <td>@Onderwerp.Omschrijving</td>
             <td>
-                <input type="button" value="Toon" />
+                <a class="btn btn-primary" asp-page="Onderwerpen" asp-page-handler="ToonOnderwerp" asp-route-id="@Onderwerp.Id">Toon</a>
             </td>
             <td>
-                <input type="button" value="Verwijder" />
+                <a class="btn btn-danger" asp-page="Onderwerpen" asp-page-handler="VerwijderOnderwerp" asp-route-id="@Onderwerp.Id">Verwijder</a>
             </td>
         </tr>
     }

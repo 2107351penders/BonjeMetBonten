@@ -1,0 +1,56 @@
+﻿@page
+@model BonjeMetBonten.Pages.BewerkVideoModel
+@{
+}
+
+<h1>Bewerk "@Model.VideoObject.Titel"</h1>
+
+<table class="table">
+		<tr>
+			<th>Titel</th>
+			<th>YouTube video</th>
+		</tr>
+		<tr>
+			<td>@Model.VideoObject.Titel</td>
+			<td>
+				<iframe width="280" height="157"
+						src="@Model.VideoObject.Link"
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen>
+				</iframe>
+			</td>
+		</tr>
+</table>
+<h1>De volgende onderwerpen komen aan bod in deze video:</h1>
+<table class="table">
+	<tr>
+		<th>Onderwerp</th>
+		<th></th>
+	</tr>
+	@foreach (var Onderwerp in Model.Onderwerpen) {
+	<tr>
+		<td>@Onderwerp.Omschrijving</td>
+		<td>
+				<a class="btn btn-danger" asp-page="BewerkVideo" asp-page-handler="VerwijderOnderwerpFromVideo" asp-route-video="@Model.VideoObject.Id" asp-route-onderwerp="@Onderwerp.Id">Verwijder</a>
+		</td>
+	</tr>
+	}
+</table>
+
+@{
+	String disabled = "";
+	if (Model.onderwerpOmschrijvingen.Count == 0)
+	{
+		disabled = "disabled";
+	}
+}
+
+<form id="addOnderwerp" method="post">
+	<select asp-for="toegevoegdOnderwerp"
+			asp-items="Model.onderwerpOmschrijvingen">
+			Maak een keuze
+	</select>
+	<input @(disabled) type="submit" value="Voeg onderwerp toe">
+</form>

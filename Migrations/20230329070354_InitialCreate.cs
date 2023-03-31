@@ -7,7 +7,7 @@
 namespace BonjeMetBonten.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,7 +40,7 @@ namespace BonjeMetBonten.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Koppel",
+                name: "Koppels",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -50,15 +50,15 @@ namespace BonjeMetBonten.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Koppel", x => x.Id);
+                    table.PrimaryKey("PK_Koppels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Koppel_Onderwerpen_OnderwerpId",
+                        name: "FK_Koppels_Onderwerpen_OnderwerpId",
                         column: x => x.OnderwerpId,
                         principalTable: "Onderwerpen",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Koppel_Videos_VideoId",
+                        name: "FK_Koppels_Videos_VideoId",
                         column: x => x.VideoId,
                         principalTable: "Videos",
                         principalColumn: "Id",
@@ -107,7 +107,7 @@ namespace BonjeMetBonten.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Koppel",
+                table: "Koppels",
                 columns: new[] { "Id", "OnderwerpId", "VideoId" },
                 values: new object[,]
                 {
@@ -139,13 +139,13 @@ namespace BonjeMetBonten.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Koppel_OnderwerpId",
-                table: "Koppel",
+                name: "IX_Koppels_OnderwerpId",
+                table: "Koppels",
                 column: "OnderwerpId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Koppel_VideoId",
-                table: "Koppel",
+                name: "IX_Koppels_VideoId",
+                table: "Koppels",
                 column: "VideoId");
         }
 
@@ -153,7 +153,7 @@ namespace BonjeMetBonten.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Koppel");
+                name: "Koppels");
 
             migrationBuilder.DropTable(
                 name: "Onderwerpen");
